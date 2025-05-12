@@ -2,7 +2,8 @@ import os
 import tempfile
 import shutil
 import pytest
-from app import app  # Adjust the import based on the actual backend file name
+
+from backend import app  # assuming your Flask app is in backend.py
 
 @pytest.fixture
 def client():
@@ -22,8 +23,10 @@ def setup_music_dir(emotion_folder):
 def test_play_category_valid_emotion(monkeypatch, client):
     temp_dir, dummy_song = setup_music_dir("happy")
 
-    monkeypatch.setattr("app.MUSIC_BASE_DIR", temp_dir)
-    monkeypatch.setattr("app.play_music", lambda x: True)
+    # Patch MUSIC_BASE_DIR used in backend.py
+    monkeypatch.setattr("backend.MUSIC_BASE_DIR", temp_dir)
+    # Patch play_music function to avoid actual playback
+    monkeypatch.setattr("backend.play_music", lambda x: True)
 
     response = client.post('/play_category', json={"category": "happy"})
     data = response.get_json()

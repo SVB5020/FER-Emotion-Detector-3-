@@ -1,40 +1,48 @@
 import pytest
 import numpy as np
-from unittest.mock import patch, MagicMock
-import realtimedetection  # Adjust if your script is named differently
+from unittest.mock import patch
+import realtimedetection  # Ensure this matches your actual filename (without .py)
 
 @pytest.fixture
-def dummy_frame():
-    # Create a dummy grayscale face image (48x48)
-    return np.random.randint(0, 255, (48, 48), dtype=np.uint8)
+def dummy_rgb_frame():
+    # Create a dummy color frame of size (224, 224, 3)
+    return np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8)
 
-@patch('emotiondetector.requests.post')
-@patch('emotiondetector.emotion_model.predict')
-@patch('emotiondetector.cv2.VideoCapture')
-@patch('emotiondetector.face_cascade.detectMultiScale')
-def test_emotion_detection_pipeline(mock_detect, mock_video, mock_predict, mock_post, dummy_frame):
-    # Mock the return values
+@patch('realtimedetection.requests.post')
+@patch('realtimedetection.emotion_model.predict')
+@patch('realtimedetection.cv2.VideoCapture')
+@patch('realtimedetection.cv2.CascadeClassifier')
+def test_emotion_detection_pipeline(mock_cascade, mock_video, mock_predict, mock_post, dummy_rgb_frame):
+    # Mock webcam behavior
     mock_video.return_value.isOpened.return_value = True
     mock_video.return_value.read.side_effect = [
-        (True, np.stack([dummy_frame]*3, axis=-1)),  # Convert dummy gray to BGR
-        (False, None)
+        (True, dummy_rgb_frame),  # First frame
+        (False, None)             # Exit condition
     ]
-    mock_detect.return_value = [(10, 10, 48, 48)]  # One face detected
-    mock_predict.return_value = np.array([[0, 0, 0, 1, 0, 0, 0]])  # 'happy'
+
+    # Mock face detection (one face found)
+    mock_cascade_instance = mock_cascade.return_value
+    mock_cascade_instance.detectMultiScale.return_value = [(10, 10, 100, 100)]
+
+    # Mock model prediction (predicts 'happy')
+    mock_predict.return_value = np.array([[1.0, 0.0, 0.0]])  # Must match EMOTION_LABELS: ['happy', 'neutral', 'sad']
+
+    # Mock backend response
     mock_post.return_value.status_code = 200
     mock_post.return_value.text = "OK"
 
-    # Run the detection loop once
-    with patch('emotiondetector.cv2.imshow'), patch('emotiondetector.cv2.waitKey', return_value=ord('q')), patch('emotiondetector.cv2.destroyAllWindows'):
+    # Patch OpenCV GUI functions so they don't block or crash test
+    with patch('realtimedetection.cv2.imshow'), \
+         patch('realtimedetection.cv2.waitKey', return_value=ord('q')), \
+         patch('realtimedetection.cv2.destroyAllWindows'):
+        
         realtimedetection.cap = mock_video.return_value
         realtimedetection.emotion_detected = False
-        realtimedetection.face_cascade.detectMultiScale = mock_detect
 
-        realtimedetection.emotion_model.predict = mock_predict
-        realtimedetection.requests.post = mock_post
+        # Simulate one iteration of detection
+        ret, frame = realtimedetection.cap.read()
+        assert ret
+        reshaped_input = np.expand_dims(frame, axis=0) / 255.0
+        pred = realtimedetection.emotion_model.predict(reshaped_input)
 
-        # Start detection loop
-        realtimedetection.main_loop = True  # Add this flag in your original script if you want
-        realtimedetection.cap.read()
-        assert realtimedetection.emotion_model.predict(np.zeros((1, 48, 48, 1))).shape == (1, 7)
-        assert mock_post.called
+        # Assert prediction and backend call

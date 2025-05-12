@@ -1,4 +1,3 @@
-
 [{
   "_id": 1,
   "title": "Singara Siriye",
@@ -7,31 +6,25 @@
     "Ananya Bhat"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Singara-Siriye.mp3",
+  "url": "/songs/Kannada/Singara-Siriye.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 2,
   "title": "Karabuu",
   "artist": "Chandan Shetty",
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Karaabu.mp3",
+  "url": "/songs/Kannada/Karaabu.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 3,
   "title": "Vajrakaya",
   "artist": "Shankar Mahadevan",
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Vajrakaya.mp3",
+  "url": "/songs/Kannada/Vajrakaya.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 4,
   "title": "Cotton Candy",
@@ -40,31 +33,25 @@
     "Sushmitha"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Cotton-Candy.mp3",
+  "url": "/songs/Kannada/Cotton-Candy.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 5,
   "title": "Bombe Helutaite",
   "artist": "Vijay Prakash",
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Bombe-Helutaite.mp3",
+  "url": "/songs/Kannada/Bombe-Helutaite.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 6,
   "title": "Nenne Tanaka",
   "artist": "Sanjith Hegde",
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Nenne-Tanaka.mp3",
+  "url": "/songs/Kannada/Nenne-Tanaka.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 7,
   "title": "Naa Ninage Nee Nanage",
@@ -73,11 +60,9 @@
     "Srilakshmi Belmannu"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Naa-Ninage-Nee-Nanage.mp3",
+  "url": "/songs/Kannada/Naa-Ninage-Nee-Nanage.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 8,
   "title": "Summane Heege Ninnane",
@@ -86,11 +71,9 @@
     "Shreya Ghoshal"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Summane-Heege-Ninnane.mp3",
+  "url": "/songs/Kannada/Summane-Heege-Ninnane.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 9,
   "title": "Neeralli Sanna",
@@ -99,11 +82,9 @@
     "Sunitha Gopuraj"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Neeralli-Sanna.mp3",
+  "url": "/songs/Kannada/Neeralli-Sanna.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 10,
   "title": "Sanchariyagu Nee",
@@ -112,52 +93,41 @@
     "Rakshitha Suresh"
   ],
   "language": "Kannada",
-  "filepath": "/songs/Kannada/Sanchariyagu-Nee.mp3",
+  "url": "/songs/Kannada/Sanchariyagu-Nee.mp3",
   "mood": "sad"
 },
-
-
-
 {
   "_id": 11,
   "title": "Tum Hi Ho",
   "artist": "Arijit Singh",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Tum-Hi-Ho.mp3",
+  "url": "/songs/Hindi/Tum-Hi-Ho.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 12,
   "title": "Kal Ho Naa Ho",
   "artist": "Sonu Nigam",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Kal-Ho-Naa-Ho.mp3",
+  "url": "/songs/Hindi/Kal-Ho-Naa-Ho.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 13,
   "title": "Ae Dil Hai Mushkil",
   "artist": "Sukhwinder Singh",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Ae-Dil-Hai-Muskhil.mp3",
+  "url": "/songs/Hindi/Ae-Dil-Hai-Mushkil.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 14,
   "title": "Jugnu",
   "artist": "Badshah",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Jugnu.mp3",
+  "url": "/songs/Hindi/Jugnu.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 15,
   "title": "The Humma Song",
@@ -166,31 +136,25 @@
     "Badshah"
   ],
   "language": "Hindi",
-  "filepath": "/songs/Hindi/The-Humma-Song.mp3",
+  "url": "/songs/Hindi/The-Humma-Song.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 16,
   "title": "Akhiyaan Gulaab",
   "artist": "Mitraz",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Akhiyaan-Gulaab.mp3",
+  "url": "/songs/Hindi/Akhiyaan-Gulaab.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 17,
   "title": "Pukarta Chala Hoon Main",
   "artist": "Mohammed Rafi",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Pukarta-Chala-Hoon-Main.mp3",
+  "url": "/songs/Hindi/Pukarta-Chala-Hoon-Main.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 18,
   "title": "Bulleya",
@@ -199,143 +163,113 @@
     "Shilpa Rao"
   ],
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Bulleya.mp3",
+  "url": "/songs/Hindi/Bulleya.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 19,
   "title": "Ilahi",
   "artist": "Arijit Singh",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Ilahi.mp3",
+  "url": "/songs/Hindi/Ilahi.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 20,
   "title": "Bekhayali",
   "artist": "Arijit Singh",
   "language": "Hindi",
-  "filepath": "/songs/Hindi/Bekhayali.mp3",
+  "url": "/songs/Hindi/Bekhayali.mp3",
   "mood": "sad"
 },
-
-
-
 {
   "_id": 21,
   "title": "Happy",
   "artist": "Pharrell Williams",
   "language": "English",
-  "filepath": "/songs/English/Happy(Pharell Williams).mp3",
+  "url": "/songs/English/Happy(Pharell Williams).mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 22,
   "title": "Dynamite",
   "artist": "Taio Cruz",
   "language": "English",
-  "filepath": "/songs/English/Dynamite(Taoi Cruz).mp3",
+  "url": "/songs/English/Dynamite(Taoi Cruz).mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 23,
   "title": "Levitating",
   "artist": "Dua Lipa",
   "language": "English",
-  "filepath": "/songs/English/Levitating(Dua Lipa).mp3",
+  "url": "/songs/English/Levitating(Dua Lipa).mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 24,
   "title": "Another Love",
   "artist": "Tom Odell",
   "language": "English",
-  "filepath": "/songs/English/Another Love(Tom Odell).mp3",
+  "url": "/songs/English/Another Love(Tom Odell).mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 25,
   "title": "Atlantis",
   "artist": "SeaFret",
   "language": "English",
-  "filepath": "/songs/English/Atlantis(Seafret).mp3",
+  "url": "/songs/English/Atlantis(Seafret).mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 26,
   "title": "Touch",
   "artist": "Sleeping At Last",
   "language": "English",
-  "filepath": "/songs/English/Touch(Sleepin at Last).mp3",
+  "url": "/songs/English/Touch(Sleepin at Last).mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 27,
   "title": "No Body, No Crime",
   "artist": "Taylor Swift",
   "language": "English",
-  "filepath": "/songs/English/No Body No Crime(Taylor Swift).mp3",
+  "url": "/songs/English/No Body No Crime(Taylor Swift).mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 28,
   "title": "Riptide",
   "artist": "Vance Joy",
   "language": "English",
-  "filepath": "/songs/English/Riptide(Vance Joy).mp3",
+  "url": "/songs/English/Riptide(Vance Joy).mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 29,
   "title": "Fireflies",
   "artist": "Owl City",
   "language": "English",
-  "filepath": "/songs/English/FireFlies(Owl City).mp3",
+  "url": "/songs/English/FireFlies(Owl City).mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 30,
   "title": "Love Yourself",
   "artist": "Justin Bieber",
   "language": "English",
-  "filepath": "/songs/English/Love Yourself(Justin Bieber).mp3",
+  "url": "/songs/English/Love Yourself(Justin Bieber).mp3",
   "mood": "neutral"
 },
-
-
-
 {
   "_id": 31,
   "title": "Oo Antava Oo Oo Antava",
   "artist": "Indravathi Chauhan",
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Oo-Antava-Oo-Oo-Antava.mp3",
+  "url": "/songs/Telugu/Oo-Antava-Oo-Oo-Antava.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 32,
   "title": "Kurchi Madathapetti",
@@ -344,11 +278,9 @@
     "Sri Krishna"
   ],
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Kurchi-Madathapetti.mp3",
+  "url": "/songs/Telugu/Kurchi-Madathapetti.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 33,
   "title": "Naatu Naatu",
@@ -357,31 +289,25 @@
     "Kaala Bhairava"
   ],
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Naatu-Naatu.mp3",
+  "url": "/songs/Telugu/Naatu-Naatu.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 34,
   "title": "Kadhale Kalagaa",
   "artist": "Anurag Kulkarni",
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Kadhale-Kalagaa.mp3",
+  "url": "/songs/Telugu/Kadhale-Kalagaa.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 35,
   "title": "Manasu Palike",
   "artist": "Rakendu Mouli",
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Manasu-Palike.mp3",
+  "url": "/songs/Telugu/Manasu-Palike.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 36,
   "title": "O Priya Priya",
@@ -390,11 +316,9 @@
     "S. P. Balasubrahmanyam"
   ],
   "language": "Telugu",
-  "filepath": "/songs/Telugu/O-Priya-Priya.mp3",
+  "url": "/songs/Telugu/O-Priya-Priya.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 37,
   "title": "Kadalalle",
@@ -403,11 +327,9 @@
     "Aishwarya Ravichandran"
   ],
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Kadalalle.mp3",
+  "url": "/songs/Telugu/Kadalalle.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 38,
   "title": "Oh Sita Hey Rama",
@@ -416,32 +338,25 @@
     "Ramya Behara"
   ],
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Oh-Sita-Hey-Rama.mp3",
+  "url": "/songs/Telugu/Oh-Sita-Hey-Rama.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 39,
   "title": "NaaNaa Hyraanaa",
   "artist": "Shreya Ghoshal",
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Naanaa-Hyraanaa.mp3",
+  "url": "/songs/Telugu/Naanaa-Hyraanaa.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 40,
   "title": "Inkem Inkem Inkem Kaavaale",
   "artist": "Sid Sriram",
   "language": "Telugu",
-  "filepath": "/songs/Telugu/Inkem-Inkem-Inkem-Kaavaale.mp3",
+  "url": "/songs/Telugu/Inkem-Inkem-Inkem-Kaavaale.mp3",
   "mood": "neutral"
 },
-
-
-
 {
   "_id": 41,
   "title": "Illuminati",
@@ -450,11 +365,9 @@
     "Sushin Shyam"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Illuminati.mp3",
+  "url": "/songs/Malayalam/Illuminati.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 42,
   "title": "Kaanthaa",
@@ -463,31 +376,25 @@
     "Varun Sunil"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Kaantha-Thrissur-Pooram.mp3",
+  "url": "/songs/Malayalam/Kaantha-Thrissur-Pooram.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 43,
   "title": "Vaanam Chaayum",
   "artist": "K. S. Harisankar",
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Vaanum-Chaayum.mp3",
+  "url": "/songs/Malayalam/Vaanum-Chaayum.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 44,
   "title": "Angu Vaana Konilu",
   "artist": "Vaikom Vijayalakshmi",
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Angu-Vaana-Konilu.mp3",
+  "url": "/songs/Malayalam/Angu-Vaana-Konilu.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 45,
   "title": "Pathiye Pathiye",
@@ -496,11 +403,9 @@
     "Swetha Mohan"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Pathiye-Pathiye.mp3",
+  "url": "/songs/Malayalam/Pathiye-Pathiye.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 46,
   "title": "Darshana",
@@ -509,31 +414,25 @@
     "Darshana Rajendran"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Darshana.mp3",
+  "url": "/songs/Malayalam/Darshana.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 47,
   "title": "Pavizha Mazha",
   "artist": "K. S. Harisankar",
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Pavizha-Mazha.mp3",
+  "url": "/songs/Malayalam/Pavizha-Mazha.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 48,
   "title": "Neela Nilave",
   "artist": "Kapil Kapilan",
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Neela-Nilave.mp3",
+  "url": "/songs/Malayalam/Neela-Nilave.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 49,
   "title": "Jeevamshamayi",
@@ -542,10 +441,9 @@
     "Harisankar"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Jeevamshamayi.mp3",
+  "url": "/songs/Malayalam/Jeevamshamayi.mp3",
   "mood": "neutral"
 },
-
 {
   "_id": 50,
   "title": "Maangalyam",
@@ -555,12 +453,9 @@
     "Divya"
   ],
   "language": "Malayalam",
-  "filepath": "/songs/Malayalam/Maangalyam.mp3",
+  "url": "/songs/Malayalam/Maangalyam.mp3",
   "mood": "happy"
 },
-
-
-
 {
   "_id": 51,
   "title": "Kavala",
@@ -569,21 +464,17 @@
     "Shilpa Rao"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Kaavaalaa.mp3",
+  "url": "/songs/Tamil/Kaavaalaa.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 52,
   "title": "Manasilaayo",
   "artist": "Anirudh Ravichander",
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Manasilaayo.mp3",
+  "url": "/songs/Tamil/Manasilaayo.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 53,
   "title": "Vaa Kanamma",
@@ -592,11 +483,9 @@
     "Uthara Unnikrishnan"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Vaa-Kanamma.mp3",
+  "url": "/songs/Tamil/Vaa-Kanamma.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 54,
   "title": "Golden Sparrow",
@@ -607,11 +496,9 @@
     "Arivu"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Golden-Sparrow.mp3",
+  "url": "/songs/Tamil/Golden-Sparrow.mp3",
   "mood": "happy"
 },
-
-
 {
   "_id": 55,
   "title": "Urugi Urugi",
@@ -619,41 +506,33 @@
     "Anand Aravindakshan"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Urugi-Urugi.mp3",
+  "url": "/songs/Tamil/Urugi-Urugi.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 56,
   "title": "Kanave Kanave",
   "artist": "Anirudh Ravichander",
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Kanave-Kanave.mp3",
+  "url": "/songs/Tamil/Kanave-Kanave.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 57,
   "title": "Idhuvum Kadandhu Pogum",
   "artist": "Sid Sriram",
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Idhuvum-Kadandu-Poogum.mp3",
+  "url": "/songs/Tamil/Idhuvum-Kadandu-Poogum.mp3",
   "mood": "sad"
 },
-
-
 {
   "_id": 58,
   "title": "Dheema Dheema",
   "artist": "Anirudh Ravichander",
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Dheema.mp3",
+  "url": "/songs/Tamil/Dheema.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 59,
   "title": "Uyirey",
@@ -661,11 +540,9 @@
     "Anand Aravindakshan"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Uyirey.mp3",
+  "url": "/songs/Tamil/Uyirey.mp3",
   "mood": "neutral"
 },
-
-
 {
   "_id": 60,
   "title": "Kannazhaga",
@@ -674,6 +551,6 @@
     "Shruti Haasan"
   ],
   "language": "Tamil",
-  "filepath": "/songs/Tamil/Kannazhaga.mp3",
+  "url": "/songs/Tamil/Kannazhaga.mp3",
   "mood": "neutral"
 }]

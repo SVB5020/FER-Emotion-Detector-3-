@@ -5,10 +5,10 @@ import requests
 import time  # Import the time module
 
 # --- Configuration ---
-MODEL_PATH = 'E:/4th SEM/Agile Project/face_emotion_detection/emotiondetector.keras'
+MODEL_PATH = r"C:\Users\Vishwanath BK\ScrumProject\FER\Zyno\face_emotion_detection\FER_MODEL.h5"
 HAAR_CASCADE_PATH = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
 BACKEND_URL = "http://127.0.0.1:5000/play_category"
-EMOTION_LABELS = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+EMOTION_LABELS = [ 'happy', 'neutral', 'sad']
 # --- End Configuration ---
 
 # Load the pre-trained emotion detection model
@@ -45,10 +45,10 @@ while True:
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         face_roi = gray[y:y + h, x:x + w]
-        resized_face = cv2.resize(face_roi, (48, 48))
+        resized_face = cv2.resize(frame[y:y+h, x:x+w], (224, 224))  # color image, not grayscale
         normalized_face = resized_face / 255.0
-        reshaped_face = np.expand_dims(normalized_face, axis=0)
-        reshaped_face = np.expand_dims(reshaped_face, axis=-1)
+        reshaped_face = np.expand_dims(normalized_face, axis=0)  # shape: (1, 224, 224, 3)
+
 
         try:
             pred = emotion_model.predict(reshaped_face)
