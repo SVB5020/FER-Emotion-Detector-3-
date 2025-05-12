@@ -1,78 +1,75 @@
 name: CI/CD Pipeline
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
-      - main   # Trigger workflow on push to the main branc
+      - main
   pull_request:
     branches:
-      - main   # Trigger workflow on pull request to the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can change this to windows-latest or macos-latest if necessary
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v2
 
-    - name: Set up Git configuration
-      run: |
-        git config --global user.name "SVB5020"
-        git config --global user.email "suvikshaviswanath.btech23@rvu.edu.in"
-        
-    - name: Add and commit changes to Git (if there are any)
-      run: |
-        git add .
-        git commit -m "Automated commit from GitHub Actions" || echo "No changes to commit"
-        
-    - name: Push changes to GitHub
-      run: |
-        git push origin main
+      - name: Set up Git configuration
+        run: |
+          git config --global user.name "SVB5020"
+          git config --global user.email "suvikshaviswanath.btech23@rvu.edu.in"
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      - name: Add and commit changes to Git (if there are any)
+        run: |
+          git add .
+          git commit -m "Automated commit from GitHub Actions" || echo "No changes to commit"
 
-    - name: Cache Docker layers
-      uses: actions/cache@v4
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+      - name: Push changes to GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin main
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}  # GitHub secrets for Docker Hub username
-        password: ${{ secrets.DOCKER_PASSWORD }}  # GitHub secrets for Docker Hub password
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true  # Push the image to Docker Hub after build
-        tags: svb5020/zyno:latest  # Change the tag according to your repo
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
-    # Step to install dependencies and run tests
-    - name: Install dependencies and run tests
-      run: |
-        # Set up Python virtual environment
-        python -m venv venv
-        source venv/bin/activate  # On Windows, use venv\Scripts\activate
-        
-        # Install dependencies
-        pip install -r requirements.txt  # Ensure all required packages are in requirements.txt
-        pip install pytest
-        
-        # Run the tests
-        pytest --maxfail=1 --disable-warnings -q  # Run tests (customize options as needed)
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Notify on success
-      run: echo "Docker image successfully built and pushed to Docker Hub."
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./Zyno
+          push: true
+          tags: svb5020/zyno:latest
 
-    # Optional: Add a cleanup step if you want to remove temporary files or directories
-    - name: Cleanup
-      run: |
-        echo "Cleanup completed."
+      - name: Install dependencies and run tests
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+          pytest --maxfail=1 --disable-warnings -q
 
+      - name: Notify on success
+        run: echo "Docker image successfully built and pushed to Docker Hub."
+
+      - name: Cleanup
+        run: echo "Cleanup completed."
