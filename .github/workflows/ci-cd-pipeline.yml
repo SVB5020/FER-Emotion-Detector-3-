@@ -34,6 +34,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git push origin main
+          
+      - name: Start MongoDB
+        run: |
+          sudo service mongod start
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
