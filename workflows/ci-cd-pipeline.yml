@@ -1,52 +1,54 @@
-name: CI/CD – Zyno Music Emotion App
+name: CI/CD Pipeline
+
+permissions:
+  contents: write
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mongo:
-        image: mongo:latest
-        ports: [27017:27017]
-        options: --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    ### FRONTEND SETUP ###
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      # Step 2: Set up Python environment and install dependencies
+      - name: Set up Python environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Install frontend dependencies
-      working-directory: ./Music-Recommendation-App
-      run: npm ci
+      # Step 3: Run tests
+      - name: Run tests with pytest
+        run: |
+          source venv/bin/activate
+          pytest --maxfail=1 --disable-warnings -q
 
-    - name: Build frontend (Next.js)
-      working-directory: ./Music-Recommendation-App
-      run: npm run build
+      # Step 4: Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    ### BACKEND SETUP ###
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10
+      # Step 5: Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Install backend dependencies
-      working-directory: ./Zyno/face_emotion_detection
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Check Flask app runs (optional test)
-      working-directory: ./Zyno/face_emotion_detection
-      run: |
-        python -c "from backend import app; print('Flask backend loaded successfully')"
+      # Step 6: Build and push Docker image
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: svb5020/fer-emotion-detector:latest
