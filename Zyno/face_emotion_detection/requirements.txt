@@ -52,7 +52,7 @@ pyasn1_modules==0.4.1
 Pygments==2.19.1
 python-dateutil==2.9.0.post0
 pytz==2025.1
-; Platform-specific dependency for Windows only
+# Platform-specific dependency for Windows only
 pywin32==308; sys_platform == "win32"
 pyzmq==26.2.1
 requests==2.32.3
