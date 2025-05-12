@@ -75,7 +75,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
-          pytest --maxfail=1 --disable-warnings -q
+          pytest --maxfail=1 --disable-warnings -q 
 
       - name: Notify on success
         run: echo "Docker image successfully built and pushed to Docker Hub."
