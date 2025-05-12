@@ -1,16 +1,19 @@
 name: CI/CD Pipeline
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
-      - main   # Trigger workflow on push to the main branc
+      - main
   pull_request:
     branches:
-      - main   # Trigger workflow on pull request to the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can change this to windows-latest or macos-latest if necessary
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository
@@ -27,8 +30,12 @@ jobs:
         git commit -m "Automated commit from GitHub Actions" || echo "No changes to commit"
         
     - name: Push changes to GitHub
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git push origin main
+
+    
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
