@@ -35,14 +35,7 @@ jobs:
         run: |
           git push origin main
           
-      - name: Install MongoDB
-        run: |
-         sudo apt-get update
-         sudo apt-get install -y mongodb
-
-      - name: Start MongoDB
-        run: |
-         sudo service mongod start
+      
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
