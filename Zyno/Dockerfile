@@ -3,7 +3,6 @@ FROM node:18-alpine AS frontend
 
 WORKDIR /app/frontend
 
-<<<<<<< HEAD
 # Install dependencies and build the frontend
 COPY Music-Recommendation-App/package*.json ./
 RUN npm install
@@ -54,7 +53,6 @@ COPY --from=frontend /app/frontend/package.json /app/frontend/package.json
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir opencv-python-headless tensorflow==2.13.0 keras==2.13.1 gunicorn
 
-
 # Set environment variables for model path and music base directory
 ENV MODEL_PATH=/app/backend/face_emotion_detection/best_model.h5
 ENV MUSIC_BASE_DIR=/app/frontend/public/songs
@@ -64,22 +62,3 @@ EXPOSE 5000 3000
 
 # Run the backend and frontend concurrently
 CMD ["concurrently", "\"cd /app/backend && gunicorn -b 0.0.0.0:5000 face_emotion_detection.realtimedetection:app\"", "\"serve -s /app/frontend -l 3000\""]
-=======
-# Step 3: Copy requirements file
-COPY face_emotion_detection/requirements.txt /app/requirements.txt
-
-# Step 4: Upgrade pip to the latest version
-RUN pip install --no-cache-dir --upgrade pip
-
-# Step 5: Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Step 6: Copy the rest of the application
-COPY face_emotion_detection /app/face_emotion_detection
-
-# Step 7: Expose port (if necessary)
-EXPOSE 5000  
-
-# Step 8: Command to run your application
-CMD ["python", "face_emotion_detection/emotion_detector.py"]
->>>>>>> 2301fa8284081528a62250937cb2042c0e70d8a0
