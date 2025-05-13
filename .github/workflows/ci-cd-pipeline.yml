@@ -59,7 +59,8 @@ jobs:
         with:
           context: ./Zyno
           push: true
-          tags: svb5020/zyno:latest
+          tags: suvikshaviswanath/zyno:latest
+
 
       - name: Install dependencies and run tests
         run: |
