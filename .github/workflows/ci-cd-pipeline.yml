@@ -38,6 +38,12 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
+      - name: Install MongoDB CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mongodb-clients
+          
+
       - name: Test MongoDB Connection
         run: |
           mongo --host localhost --port 27017 --eval "db.stats()"
