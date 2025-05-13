@@ -12,7 +12,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     container:
-      image: sha256:4e3e4bffc51a7cdf4f019b5edbae3913b34e73f1e6cee141b199fdcbd6576943  # Your local Docker image ID
+      image: sha256:4e3e4bffc51a7cdf4f019b5edbae3913b34e73f1e6cee141b199fdcbd6576943  # Your Docker image ID
 
     steps:
     # Step 1: Check out the code from the repository
@@ -25,17 +25,35 @@ jobs:
         python3 --version  # Verify Python version
         python -m pip install --upgrade pip
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
+    # Step 3: Install backend dependencies
+    - name: Install backend dependencies
       run: pip install -r Zyno/face_emotion_detection/requirements.txt
 
-    # Step 4: Download missing model file (if required)
+    # Step 4: Install Node.js for frontend
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+
+    # Step 5: Install frontend dependencies and build
+    - name: Install and build frontend
+      working-directory: Zyno/Music-Recommendation-App
+      run: |
+        npm install
+        npm run build
+
+    # Step 6: Ensure the model file exists
     - name: Ensure model file exists
       run: |
         if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
           wget https://example.com/path-to-best_model.h5 -O Zyno/face_emotion_detection/best_model.h5
         fi
 
-    # Step 5: Run tests
-    - name: Run tests
+    # Step 7: Run backend tests
+    - name: Run backend tests
       run: python -m unittest discover -s Zyno/face_emotion_detection/tests -p "*.py"
+
+    # Step 8: Deploy (Optional step for deployment)
+    - name: Deploy
+      run: |
+        echo "Ready for deployment step. Add your deployment logic here."
