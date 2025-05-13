@@ -24,6 +24,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Fetch LFS files (if applicable)
+      # If best_model.h5 is stored in Git LFS, this will ensure it is pulled
+      run: |
+        git lfs pull
+
+    - name: Verify model file presence
+      # Debug step to ensure the model file exists in the expected path
+      run: |
+        if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
+          echo "Error: best_model.h5 is missing!"
+          exit 1
+        fi
+        ls -l Zyno/face_emotion_detection
+
     - name: Lint code with flake8
       run: |
         pip install flake8
