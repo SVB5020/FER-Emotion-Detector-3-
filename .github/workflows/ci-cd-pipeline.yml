@@ -19,7 +19,12 @@ jobs:
       mongodb:
         image: mongo:latest
         ports:
-          - "27017:27017"
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Check out repository
@@ -28,7 +33,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10.11  # Matches local environment
+          python-version: 3.10.11
 
       - name: Install Python dependencies
         run: |
@@ -38,15 +43,17 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Install MongoDB CLI
+      - name: Wait for MongoDB to be ready
         run: |
-          sudo apt-get update
-          sudo apt-get install -y mongodb-clients
-          
+          for i in {1..30}; do
+            nc -z localhost 27017 && echo "MongoDB is up!" && break
+            echo "Waiting for MongoDB..."
+            sleep 2
+          done
 
       - name: Test MongoDB Connection
         run: |
-          mongo --host localhost --port 27017 --eval "db.stats()"
+          mongosh --host localhost --eval "db.stats()"
 
       - name: Set up Git configuration
         run: |
