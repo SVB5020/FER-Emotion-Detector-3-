@@ -1,4 +1,4 @@
-# .github/workflows/simple-cicd.yml
+# .github/workflows/simple-ci.yml
 name: CI/CD Pipeline
 
 on:
@@ -28,9 +28,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f "requirements.txt" ]; then pip install -r requirements.txt; fi
+        pip install -r Zyno/face_emotion_detection/requirements.txt
 
     # Step 4: Run tests
     - name: Run tests
       run: |
-        if [ -f "tests/test.py" ]; then python -m unittest discover -s tests; else echo "No tests found, skipping."; fi
+        python -m unittest discover -s Zyno/face_emotion_detection/tests -p "*.py"
