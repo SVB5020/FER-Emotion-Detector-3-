@@ -1,5 +1,5 @@
 # .github/workflows/simple-cicd.yml
-name: Simple CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
