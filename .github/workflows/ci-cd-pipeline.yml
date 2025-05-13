@@ -37,11 +37,16 @@ jobs:
           wget https://example.com/path-to-best_model.h5 -O Zyno/face_emotion_detection/best_model.h5
         fi
 
-    # Step 5: Install TensorRT libraries if needed
+   # Step 5: Install TensorRT libraries if needed
     - name: Install TensorRT libraries
       run: |
         sudo apt-get update
-        sudo apt-get install -y tensorrt
+        sudo apt-get install -y wget gnupg2
+        # Add NVIDIA's package repository
+        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb
+        sudo dpkg -i cuda-keyring_1.0-1_all.deb
+        sudo apt-get update
+        sudo apt-get install -y tensorrt python3-libnvinfer
 
     # Step 6: Run tests
     - name: Run tests
