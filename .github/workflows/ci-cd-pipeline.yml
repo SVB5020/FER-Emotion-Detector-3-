@@ -4,50 +4,30 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'  # Updated version
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
 
-    - name: Upgrade pip and build tools
-      run: |
-        python -m pip install --upgrade pip setuptools wheel
+      - name: Install Dependencies
+        run: pip install -r Zyno/face_emotion_detection/requirements.txt
 
-    - name: Install backend dependencies
-      run: pip install -r Zyno/face_emotion_detection/requirements.txt
+      - name: Download Model
+        run: wget -O ./Zyno/face_emotion_detection/best_model.h5 "https://link-to-your-model-file"
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
-
-    - name: Install and build frontend
-      working-directory: Zyno/Music-Recommendation-App
-      run: |
-        npm install
-        npm run build
-
-    - name: Ensure model file exists
-      run: |
-        if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
-          wget https://example.com/path-to-best_model.h5 -O Zyno/face_emotion_detection/best_model.h5
-        fi
-
-    - name: Run backend tests
-      run: python -m unittest discover -s Zyno/face_emotion_detection/tests -p "*.py"
-
-    - name: Deploy
-      run: |
-        echo "Ready for deployment step. Add your deployment logic here."
+      - name: Run Tests
+        run: python -m unittest discover -s Zyno/face_emotion_detection/tests
