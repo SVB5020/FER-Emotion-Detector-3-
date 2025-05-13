@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,6 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r FER/requirements.txt
 
-    - name: Run tests
+    - name: Lint code with flake8
       run: |
-        pytest
+        pip install flake8
+        flake8 FER/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Run tests with pytest
+      run: |
+        pip install pytest
+        pytest FER/
