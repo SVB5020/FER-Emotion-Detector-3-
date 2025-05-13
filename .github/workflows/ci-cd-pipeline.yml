@@ -19,31 +19,35 @@ jobs:
       mongodb:
         image: mongo:latest
         ports:
-          - 27017:27017
+          - "27017:27017"
+        options: >-
+          --bind_ip_all
 
     steps:
+      # Step 1: Check out repository
       - name: Check out repository
         uses: actions/checkout@v2
 
+      # Step 2: Set up Git configuration
       - name: Set up Git configuration
         run: |
           git config --global user.name "SVB5020"
           git config --global user.email "suvikshaviswanath.btech23@rvu.edu.in"
 
-      - name: Add and commit changes to Git (if there are any)
-        run: |
-          git add .
-          git commit -m "Automated commit from GitHub Actions" || echo "No changes to commit"
-
+      # Step 3: Push changes to GitHub
       - name: Push changes to GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git add .
+          git commit -m "Automated commit from GitHub Actions" || echo "No changes to commit"
           git push origin main
 
+      # Step 4: Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      # Step 5: Cache Docker layers
       - name: Cache Docker layers
         uses: actions/cache@v4
         with:
@@ -52,12 +56,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      # Step 6: Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # Step 7: Build and push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -65,17 +71,20 @@ jobs:
           push: true
           tags: suvikshaviswanath/zyno:latest
 
+      # Step 8: Install Python dependencies and run tests
       - name: Install dependencies and run tests
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install --upgrade pip
+          pip install --upgrade pip setuptools
           pip install -r requirements.txt
           pip install pytest
           pytest --maxfail=1 --disable-warnings -q 
 
+      # Step 9: Notify on success
       - name: Notify on success
         run: echo "Docker image successfully built and pushed to Docker Hub."
 
+      # Step 10: Cleanup
       - name: Cleanup
         run: echo "Cleanup completed."
