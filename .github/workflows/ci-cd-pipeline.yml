@@ -32,4 +32,4 @@ jobs:
     - name: Run tests with pytest
       run: |
         pip install pytest
-        pytest 
+        pytest Zyno/face_emotion_detection/tests/
