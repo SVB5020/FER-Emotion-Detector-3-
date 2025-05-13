@@ -17,9 +17,13 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Upgrade pip and build tools
       run: |
-        python3 --version
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip setuptools wheel
 
     - name: Install backend dependencies
       run: pip install -r Zyno/face_emotion_detection/requirements.txt
