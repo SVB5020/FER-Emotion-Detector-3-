@@ -30,7 +30,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r Zyno/face_emotion_detection/requirements.txt
 
-    # Step 4: Run tests
+    # Step 4: Download missing model file (if required)
+    - name: Ensure model file exists
+      run: |
+        if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
+          wget https://example.com/path-to-best_model.h5 -O Zyno/face_emotion_detection/best_model.h5
+        fi
+
+    # Step 5: Install TensorRT libraries if needed
+    - name: Install TensorRT libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tensorrt
+
+    # Step 6: Run tests
     - name: Run tests
       run: |
         python -m unittest discover -s Zyno/face_emotion_detection/tests -p "*.py"
