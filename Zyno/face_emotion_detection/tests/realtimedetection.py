@@ -5,7 +5,7 @@ import requests
 import time  # Import the time module
 
 # --- Configuration ---
-MODEL_PATH = r"C:\Users\Vishwanath BK\ScrumProject\FER\Zyno\face_emotion_detection\FER_MODEL.h5"
+MODEL_PATH = r"C:\Users\Vishwanath BK\ScrumProject\FER\Zyno\face_emotion_detection\best_model.h5"
 HAAR_CASCADE_PATH = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
 BACKEND_URL = "http://127.0.0.1:5000/play_category"
 EMOTION_LABELS = [ 'happy', 'neutral', 'sad']
