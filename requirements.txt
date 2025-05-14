@@ -1,4 +1,4 @@
-Flask==3.1.0
+Flask==2.3.3
 flask-cors==5.0.1
 tensorflow==2.10.1
 numpy==1.23.5
@@ -7,5 +7,4 @@ matplotlib==3.6.2
 seaborn==0.12.2
 scikit-learn==1.1.3
 opencv-python==4.6.0.66
-Flask==2.3.3  # Downgrade to a compatible version
-pytest-flask==1.2.0  # Ensure this matches the Flask version
+pytest-flask==1.2.0  # Ensure compatibility with Flask==2.3.3
