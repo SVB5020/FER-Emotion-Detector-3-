@@ -24,6 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Download Model
+      run: |
+        FILE_ID="1Xe-APUbEqcyZm8kc2J_0ZchGmFU-lpeR"
+        curl -L -o Zyno/face_emotion_detection/backend/face_emotion_detection/best_model.h5 \
+          "https://drive.google.com/uc?export=download&id=${FILE_ID}"
+
     - name: Run backend
       run: |
         nohup python Zyno/face_emotion_detection/backend.py &
