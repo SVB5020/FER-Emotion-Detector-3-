@@ -32,6 +32,10 @@ jobs:
         FILE_ID="1Xe-APUbEqcyZm8kc2J_0ZchGmFU-lpeR"
         curl -L -o Zyno/face_emotion_detection/best_model.h5 \
           "https://drive.google.com/uc?export=download&id=${FILE_ID}"
+        if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
+          echo "Error: best_model.h5 download failed!"
+          exit 1
+        fi
 
     - name: Verify Model File
       run: |
