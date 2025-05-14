@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from backend import app
+from Zyno.face_emotion_detection.backend import app
 
 @pytest.fixture
 def client():
