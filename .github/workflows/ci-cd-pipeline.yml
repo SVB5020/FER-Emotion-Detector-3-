@@ -10,6 +10,9 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -30,7 +33,7 @@ jobs:
         curl -L -o Zyno/face_emotion_detection/best_model.h5 \
           "https://drive.google.com/uc?export=download&id=${FILE_ID}"
 
-    - name: Verify model file presence
+    - name: Verify Model File
       run: |
         if [ ! -f Zyno/face_emotion_detection/best_model.h5 ]; then
           echo "Error: best_model.h5 is missing!"
@@ -38,16 +41,12 @@ jobs:
         fi
         ls -l Zyno/face_emotion_detection
 
-    - name: Set Python path
-      run: |
-        export PYTHONPATH=$PYTHONPATH:$(pwd)/Zyno/face_emotion_detection
-
-    - name: Lint code with flake8
+    - name: Lint Code with flake8
       run: |
         pip install flake8
         flake8 --count --select=E9,F63,F7,F82 --show-source --statistics
 
-    - name: Run tests with pytest
+    - name: Run Tests with pytest
       run: |
         pip install pytest
         pytest Zyno/face_emotion_detection/tests/
