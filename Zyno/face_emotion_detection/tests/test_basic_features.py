@@ -1,5 +1,5 @@
 import pytest
-from Zyno.face_emotion_detection.app import app  # Replace with your actual app import path
+from Zyno.face_emotion_detection.backend import app  # Replace with your actual app import path
 
 
 @pytest.fixture
