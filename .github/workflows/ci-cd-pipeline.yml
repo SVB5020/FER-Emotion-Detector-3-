@@ -28,7 +28,7 @@ jobs:
         pip install -r requirements.txt
         pip install -r Zyno/face_emotion_detection/requirements.txt
         pip install pytest pytest-flask
-
+   
     - name: Download Model
       run: |
         FILE_ID="1Xe-APUbEqcyZm8kc2J_0ZchGmFU-lpeR"
